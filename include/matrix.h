@@ -29,6 +29,7 @@
 
 namespace linalg
 {
+template <class T>
 class Matrix
 {
     // assume dense matrix
@@ -74,8 +75,8 @@ public:
     * @param mat - Integer value.
     * @return Initializes a Matrix object.
     */
-    Matrix(const int mat)
-        : m_matrix{1, std::vector<int>(1, mat)}
+    Matrix(const T mat)
+        : m_matrix{1, std::vector<T>(1, mat)}
     {
     }
 
@@ -99,7 +100,7 @@ public:
     * @param mat - 1D STL vector.
     * @return Initializes a Matrix object.
     */
-    Matrix(const std::vector<int>& mat)
+    Matrix(const std::vector<T>& mat)
         : m_matrix{1, mat}
     {
     }
@@ -126,7 +127,7 @@ public:
     * @param mat - 2D STL vector.
     * @return Initializes a Matrix object.
     */
-    Matrix(const std::vector<std::vector<int>>& mat)
+    Matrix(const std::vector<std::vector<T>>& mat)
         : m_matrix{mat}
     {
         // long long int row_size{m_matrix[0].size()};
@@ -162,7 +163,7 @@ public:
     * @return Initializes a Matrix object.
     */
     Matrix(const size_t& row, const size_t& col, int value=0)
-        : m_matrix{row, std::vector<int>(col, value)}
+        : m_matrix{row, std::vector<T>(col, value)}
     {
     }
 
@@ -202,7 +203,7 @@ public:
     * @param rhs - The right-hand side of the operator should be a Matrix object.
     * @return Matrix multiplication after dimension checking as a Matrix object.
     */
-    friend Matrix operator* (const Matrix& mat1, const Matrix& mat2);
+    friend Matrix<T> operator* (const Matrix<T>& mat1, const Matrix<T>& mat2);
 
    /**
     * @brief Returns the transpose of the Matrix object.
@@ -224,7 +225,7 @@ public:
     * 
     * @return The transpose of the Matrix object.
     */
-    Matrix transpose();
+    Matrix<T> transpose();
 
    /**
     * @brief Returns the size of the Matrix object in a Pair.
@@ -263,7 +264,7 @@ public:
     * 
     * @return The output stream of the complete Matrix object.
     */
-    friend std::ostream& operator<< (std::ostream& output, const Matrix& mat);
+    friend std::ostream& operator<< (std::ostream& output, const Matrix<T>& mat);
 
    /**
     * @brief This function helps print the size of the Matrix object.
@@ -297,7 +298,7 @@ public:
     * @return True if all the elements are the same, False even if 
     * one element does not match.
     */
-    friend bool operator== (const Matrix& c1, const Matrix& c2);
+    friend bool operator== (const Matrix<T>& c1, const Matrix<T>& c2);
 
    /**
     * @brief Returns true if both Matrices are the same, false even 
@@ -319,17 +320,18 @@ public:
     * @param m2 - The second Matrix object to compare.
     * @return Whether the given Matrices are the same or not.
     */
-    static bool isSame(const linalg::Matrix& m1, const linalg::Matrix& m2);
+    static bool isSame(const linalg::Matrix<T>& m1, const linalg::Matrix<T>& m2);
 
 private:
     // The actual 2D Matrix.
-    std::vector<std::vector<int>> m_matrix;
+    std::vector<std::vector<T>> m_matrix;
 };
 
-Matrix operator*(const Matrix& mat1, const Matrix& mat2)
+template <class T>
+Matrix<T> operator*(const Matrix<T>& mat1, const Matrix<T>& mat2)
 {
     assert(mat1.m_matrix[0].size() == mat2.m_matrix.size());
-    Matrix res(mat1.m_matrix.size(), mat2.m_matrix[0].size());
+    Matrix<T> res(mat1.m_matrix.size(), mat2.m_matrix[0].size());
 
     for (int i=0; i<res.m_matrix.size(); i++)
     {
@@ -367,11 +369,12 @@ Matrix operator*(const Matrix& mat1, const Matrix& mat2)
 // }
 
 // TODO: can this be done in-place
-Matrix Matrix::transpose()
+template <class T>
+Matrix<T> Matrix<T>::transpose()
 {
     // Initialize the output matrix.
     // Notice the dimensions are switched.
-    Matrix res(m_matrix[0].size(), m_matrix.size());
+    Matrix<T> res(m_matrix[0].size(), m_matrix.size());
 
     for (int i=0; i<m_matrix.size(); i++)
     {
@@ -383,13 +386,15 @@ Matrix Matrix::transpose()
     return res;
 }
 
-std::pair<int, int> Matrix::size()
+template <class T>
+std::pair<int, int> Matrix<T>::size()
 {
     // row, col
     return std::make_pair(this->m_matrix.size(), this->m_matrix[0].size());
 }
 
-std::ostream& operator<< (std::ostream& output, const Matrix& mat)
+template <class T>
+std::ostream& operator<< (std::ostream& output, const Matrix<T>& mat)
 {
     // Pushes the first (N-1) rows in the buffer.
     output << '[';
@@ -427,12 +432,14 @@ std::ostream& operator<< (std::ostream& output, const std::pair<int, int>& size)
     return output;
 }
 
-bool operator== (const Matrix& m1, const Matrix& m2)
+template <class T>
+bool operator== (const Matrix<T>& m1, const Matrix<T>& m2)
 {
     return (m1.m_matrix == m2.m_matrix);
 }
 
-static bool isSame(const linalg::Matrix& m1, const linalg::Matrix& m2)
+template <class T>
+static bool isSame(const linalg::Matrix<T>& m1, const linalg::Matrix<T>& m2)
 {
     return (m1 == m2);
 }
