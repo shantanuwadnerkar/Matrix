@@ -31,21 +31,21 @@ int main()
     // linalg::Matrix B;
     // std::cout << A * B;
 
-    linalg::Matrix mat1{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
-    linalg::Matrix mat2{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    linalg::Matrix<double> mat1{{{1.5, 2.0, 3.0}, {4.0, 5.0, 6.0}, {7.0, 8.0, 9.0}}};
+    linalg::Matrix<double> mat2{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
     // linalg::Matrix mat3{{{1, 2, 3}, {4, 5, 6}}};
     // linalg::Matrix mat4{100, 100, 3};
     // std::cout << mat4.size().first << ' ' << mat4.size().second << '\n';
 
-    std::cout << mat1;
+    std::cout << mat1 * mat2;
 
     using namespace linalg;
-    Matrix A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
-    Matrix B{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
+    Matrix<int> A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
+    Matrix<int> B{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
     B.transpose();
     // std::vector<int> C_{285};
     // Matrix C{{285}};
-    Matrix C{1, 1, 285};
+    Matrix<int> C{1, 1, 285};
     std::cout << C.size();    
 
     return 0;
