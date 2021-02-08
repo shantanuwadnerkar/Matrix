@@ -20,13 +20,13 @@ Create a build folder and compile.
 
 ```Shell
 mkdir build && cd build
-cmake ../ -DCMAKE_BUILD_TYPE=Release
+cmake
 make
 ```
 
-This will configure the workspace and make the library Matrix.h an interface library.
+This will configure the workspace and make the library Matrix.h an interface library. The defualt compiler options are `CMAKE_BUILD_TYPE=Release` and `BUILD_TEST=ON`.
 
-To compile and run unit tests, change the cmake configuration. Perform this commands inside the build/ folder created in the previous step.
+/// To compile and run unit tests, change the cmake configuration. Perform this commands inside the build/ folder created in the previous step.
 
 ```Shell
 cmake ../ -DCMAKE_BUILD_TYPE=Release -DBULD_TEST=ON
@@ -34,11 +34,11 @@ make
 make test
 ```
 
-By default, unit tests will be compiled. To turn that off, set this flag `-DBUILD_TEST=OFF` when configuring CMake.
+/// By default, unit tests will be compiled. To turn that off, set this flag `-DBUILD_TEST=OFF` when configuring CMake.
 
-You can also run `ctest` instead of `make test`. This will run all the test cases and show the performance on the console.
+/// You can also run `ctest` instead of `make test`. This will run all the test cases and show the performance on the console.
 
-There is an additional test case which does time profiling by using steady_clock() from chrono library. To run, the library and test cases should be compiled from the previous step.
+/// There is an additional test case which does time profiling by using steady_clock() from chrono library. To run, the library and test cases should be compiled from the previous step.
 
 ```Shell
 ./test/test_time_multiplication
@@ -67,7 +67,7 @@ Clone this library using the following command in the directory which holds the 
 `git clone git@github.com:shantanuwadnerkar/matmul.git`
 
 
-Next, configure the top level CMakeLists.txt,
+Next, configure the user's top level CMakeLists.txt,
 
 ```CMake
 # Add the library's CMakeLists.txt to the project

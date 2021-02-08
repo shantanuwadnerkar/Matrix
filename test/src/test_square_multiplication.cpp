@@ -89,15 +89,6 @@ TEST_CASE("small_matrix5")
     CHECK(isSame(C, A * B) == 1);
 }
 
-TEST_CASE("medium_zeros_matrix")
-{
-    using namespace linalg;
-    Matrix<int> A{100, 100, 0};
-    Matrix<int> B{100, 100, 0};
-    Matrix<int> C{100, 100, 0};
-    CHECK(isSame(C, A * B) == 1);
-}
-
 TEST_CASE("medium_ones_matrix")
 {
     using namespace linalg;
@@ -113,15 +104,6 @@ TEST_CASE("medium_matrix")
     Matrix<int> A{100, 100, 6};
     Matrix<int> B{100, 100, 2};
     Matrix<int> C{100, 100, 1200};
-    CHECK(isSame(C, A * B) == 1);
-}
-
-TEST_CASE("huge_zeros_matrix")
-{
-    using namespace linalg;
-    Matrix<int> A{1000, 1000, 0};
-    Matrix<int> B{1000, 1000, 0};
-    Matrix<int> C{1000, 1000, 0};
     CHECK(isSame(C, A * B) == 1);
 }
 
