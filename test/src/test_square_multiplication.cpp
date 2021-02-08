@@ -29,117 +29,117 @@ TEST_SUITE_BEGIN("test_square_matrix");
 TEST_CASE("small_zeros_matrix")
 {
     using namespace linalg;
-    Matrix A{5, 5, 0};
-    Matrix B{5, 5, 0};
-    Matrix C{5, 5, 0};
+    Matrix<int> A{5, 5, 0};
+    Matrix<int> B{5, 5, 0};
+    Matrix<int> C{5, 5, 0};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_ones_matrix")
 {
     using namespace linalg;
-    Matrix A{5, 5, 1};
-    Matrix B{5, 5, 1};
-    Matrix C{5, 5, 5};
+    Matrix<int> A{5, 5, 1};
+    Matrix<int> B{5, 5, 1};
+    Matrix<int> C{5, 5, 5};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_matrix1")
 {
     using namespace linalg;
-    Matrix A{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
-    Matrix B{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
-    Matrix C{{{30, 36, 42}, {66, 81, 96}, {102, 126, 150}}};
+    Matrix<int> A{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    Matrix<int> B{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    Matrix<int> C{{{30, 36, 42}, {66, 81, 96}, {102, 126, 150}}};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_matrix2")
 {
     using namespace linalg;
-    Matrix A{{{1, 2, 3, 3}, {4, 5, 6, 6}, {7, 8, 9, 9}, {1, 2, 3, 4}}};
-    Matrix B{{{4, 3, 2, 1}, {9, 9, 8, 7}, {6, 6, 5, 4}, {3, 3, 2, 1}}};
-    Matrix C{{{49, 48, 39, 30}, {115, 111, 90, 69}, {181, 174, 141, 108}, {52, 51, 41, 31}}};
+    Matrix<int> A{{{1, 2, 3, 3}, {4, 5, 6, 6}, {7, 8, 9, 9}, {1, 2, 3, 4}}};
+    Matrix<int> B{{{4, 3, 2, 1}, {9, 9, 8, 7}, {6, 6, 5, 4}, {3, 3, 2, 1}}};
+    Matrix<int> C{{{49, 48, 39, 30}, {115, 111, 90, 69}, {181, 174, 141, 108}, {52, 51, 41, 31}}};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_matrix3")
 {
     using namespace linalg;
-    Matrix A{5, 5, 5};
-    Matrix B{5, 5, 5};
-    Matrix C{5, 5, 125};
+    Matrix<int> A{5, 5, 5};
+    Matrix<int> B{5, 5, 5};
+    Matrix<int> C{5, 5, 125};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_matrix4")
 {
     using namespace linalg;
-    Matrix A{10, 10, 5};
-    Matrix B{10, 10, 5};
-    Matrix C{10, 10, 250};
+    Matrix<int> A{10, 10, 5};
+    Matrix<int> B{10, 10, 5};
+    Matrix<int> C{10, 10, 250};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("small_matrix5")
 {
     using namespace linalg;
-    Matrix A{10, 10, 3};
-    Matrix B{10, 10, 7};
-    Matrix C{10, 10, 210};
+    Matrix<int> A{10, 10, 3};
+    Matrix<int> B{10, 10, 7};
+    Matrix<int> C{10, 10, 210};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("medium_zeros_matrix")
 {
     using namespace linalg;
-    Matrix A{100, 100, 0};
-    Matrix B{100, 100, 0};
-    Matrix C{100, 100, 0};
+    Matrix<int> A{100, 100, 0};
+    Matrix<int> B{100, 100, 0};
+    Matrix<int> C{100, 100, 0};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("medium_ones_matrix")
 {
     using namespace linalg;
-    Matrix A{100, 100, 1};
-    Matrix B{100, 100, 1};
-    Matrix C{100, 100, 100};
+    Matrix<int> A{100, 100, 1};
+    Matrix<int> B{100, 100, 1};
+    Matrix<int> C{100, 100, 100};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("medium_matrix")
 {
     using namespace linalg;
-    Matrix A{100, 100, 6};
-    Matrix B{100, 100, 2};
-    Matrix C{100, 100, 1200};
+    Matrix<int> A{100, 100, 6};
+    Matrix<int> B{100, 100, 2};
+    Matrix<int> C{100, 100, 1200};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("huge_zeros_matrix")
 {
     using namespace linalg;
-    Matrix A{1000, 1000, 0};
-    Matrix B{1000, 1000, 0};
-    Matrix C{1000, 1000, 0};
+    Matrix<int> A{1000, 1000, 0};
+    Matrix<int> B{1000, 1000, 0};
+    Matrix<int> C{1000, 1000, 0};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("huge_ones_matrix")
 {
     using namespace linalg;
-    Matrix A{1000, 1000, 1};
-    Matrix B{1000, 1000, 1};
-    Matrix C{1000, 1000, 1000};
+    Matrix<int> A{1000, 1000, 1};
+    Matrix<int> B{1000, 1000, 1};
+    Matrix<int> C{1000, 1000, 1000};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("huge_matrix")
 {
     using namespace linalg;
-    Matrix A{1000, 1000, 9};
-    Matrix B{1000, 1000, 7};
-    Matrix C{1000, 1000, 63000};
+    Matrix<int> A{1000, 1000, 9};
+    Matrix<int> B{1000, 1000, 7};
+    Matrix<int> C{1000, 1000, 63000};
     CHECK(isSame(C, A * B) == 1);
 }
 

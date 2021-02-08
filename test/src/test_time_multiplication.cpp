@@ -33,9 +33,9 @@ int main()
     {
         auto start = std::chrono::high_resolution_clock::now();
         // std::this_thread::sleep_for(std::chrono::seconds(1));
-        linalg::Matrix A{100, 100, 3};
-        linalg::Matrix B{100, 100, 5};
-        linalg::Matrix C{A * B};
+        linalg::Matrix<int> A{100, 100, 3};
+        linalg::Matrix<int> B{100, 100, 5};
+        linalg::Matrix<int> C{A * B};
         auto stop = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
         iterations += duration.count();

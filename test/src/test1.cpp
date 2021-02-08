@@ -29,18 +29,18 @@ TEST_SUITE_BEGIN("test");
 TEST_CASE("test_func")
 {
     using namespace linalg;
-    Matrix A{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
-    Matrix B{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
-    Matrix C{{{30, 36, 42}, {66, 81, 96}, {102, 126, 150}}};
+    Matrix<int> A{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    Matrix<int> B{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};
+    Matrix<int> C{{{30, 36, 42}, {66, 81, 96}, {102, 126, 150}}};
     CHECK(isSame(C, A * B) == 1);
 }
 
 TEST_CASE("new_test")
 {
     using namespace linalg;
-    Matrix A{2, 3, 3};
-    Matrix B{3, 2, 3};
-    Matrix C{{{27, 27}, {27, 27}}};
+    Matrix<int> A{2, 3, 3};
+    Matrix<int> B{3, 2, 3};
+    Matrix<int> C{{{27, 27}, {27, 27}}};
     CHECK(isSame(C, A * B) == 1);
 }
 
@@ -51,13 +51,13 @@ TEST_SUITE_BEGIN("vector operations");
 TEST_CASE("row")
 {
     using namespace linalg;
-    Matrix A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
-    Matrix B{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
+    Matrix<int> A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
+    Matrix<int> B{{1, 2, 3, 4, 5, 6, 7, 8, 9}};
     std::cout << B.size();
     B = B.transpose();
     std::cout << B.size();
     std::vector<int> C_{285};
-    Matrix C{C_};
+    Matrix<int> C{C_};
     // std::cout << C.size().first << C.size().second;
     CHECK(isSame(C, A * B) == 1);
 }
