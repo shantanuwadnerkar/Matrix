@@ -61,11 +61,27 @@ CMAKE_CXX_STANDARD  - (98/11/14/17) Compiles for the specified language standard
 Other CMake provided flags are valid as well.
 
 ## Design Choices
+### Code-style
+The code style is similar to Google style guide for C++, but it doesn't replicate it completely.
+
+### Template
+The solution is templatized for arithmetic types. Although the object can be initialized with other data, that is not the intended use. If the user performs any operations, it should fail by a compiler error. This design is by choice.
+
+### Functionality
+First, there is possibility of adding more functions, like push_row(), push_col() to update the Matrix.
+
+Second, the application is single threaded right now. It can be more optimized by using multiple threads.
+
+Third, multiplication in matrices of higher dimensions (above 2D) was considered and rejected. Higher dimension matrix multiplication does not make sense.
+
+Fourth, the actual matrix is a 2D vector. It is stored on stack. Another possibility is to store it on the heap.
 
 ### CMake
 There are 2 major CMake flags for discussion. First, CMAKE_BUILD_TYPE, and second, BUILD_TEST. 
 BUILD_TEST should be on only when the CMAKE_BUILD_TYPE is set to Debug. Although, for time testing, the binaries compiled for release show actual performance.
 This is why, CMAKE_BUILD_TYPE and BUILD_TEST are kept independent. Tests can be built whether the build type is release or debug.
+
+
 
 
 ## How to use the library
@@ -87,3 +103,16 @@ add_executable(new_exe new_project/src/tt.cpp)
 # Link the library to user's executable
 target_link_libraries(new_exe Matrix)
 ```
+
+The library is encompassed in the `linalg` namespace.
+
+```C++
+#include "Matrix.h"
+
+linalg::Matrix<int> mat1{3, 3, 0}; // Initializes a 3-by-3 matrix with all elements 0.
+
+std::cout << mat1;
+std::cout << mat1.size();
+```
+
+For more details about usage, check the documentation.

@@ -31,24 +31,6 @@ namespace linalg
 template <typename T>
 class Matrix
 {
-    // assume dense matrix
-    // add operator<<
-    // check various constructor parameter types: const ref, ref, move semantics
-    // can bitwise operations help?
-    // row, col member var?
-    // heap allocation? maybe over size over 4 is heap allocated? Test for performance.
-
-    // higher dimension matrices were considered and rejected.
-    // note on how there cannot be empty matrices.
-    // push row and push col functions can also be added. Not added currently.
-    
-
-    // add push_row(), push_col() functions? if added, need to assert the dimensions when inputting.
-
-    // How to install the library.
-    // Note about the linalg namespace. Stands for linear algebra.
-    // Details about testing. `make && make test`. Also note about individual test executables.
-    // Note about time test case.
 public:
     // Delete the default constructor. Matrix cannot be initialized empty.
     Matrix() = delete;

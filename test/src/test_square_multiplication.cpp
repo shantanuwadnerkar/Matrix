@@ -124,22 +124,4 @@ TEST_CASE("huge_matrix")
     CHECK(isSame(C, A * B) == 1);
 }
 
-// TEST_CASE("vhuge_matrix1")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{10000, 10000, 14};
-//     Matrix<int> B{10000, 10000, 27};
-//     Matrix<int> C{10000, 10000, 3780000};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-// TEST_CASE("vhuge_matrix2")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{100000, 100000, 1};
-//     Matrix<int> B{100000, 100000, 1};
-//     Matrix<int> C{100000, 100000, 100000};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
 TEST_SUITE_END();
