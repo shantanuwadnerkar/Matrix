@@ -20,6 +20,12 @@ add_executable(test_rectangle_multiplication src/test_rectangle_multiplication.c
 
 add_executable(test_vector_multiplication src/test_vector_multiplication.cpp $<TARGET_OBJECTS:${TEST_MAIN}>)
 
+add_executable(test_transpose_size src/test_transpose_size.cpp $<TARGET_OBJECTS:${TEST_MAIN}>)
+
+add_executable(test_associative_multiplication src/test_associative_multiplication.cpp $<TARGET_OBJECTS:${TEST_MAIN}>)
+
+add_executable(test_double_multiplication src/test_double_multiplication.cpp $<TARGET_OBJECTS:${TEST_MAIN}>)
+
 add_executable(test_time_multiplication src/test_time_multiplication.cpp)
 
 # target_link_libraries(test1 INTERFACE Matrix)
@@ -47,3 +53,15 @@ add_test(
 add_test(
 	NAME 	test_vector_multiplication
 	COMMAND test_vector_multiplication)
+
+add_test(
+	NAME 	test_transpose_size
+	COMMAND test_transpose_size)
+
+add_test(
+	NAME 	test_associative_multiplication
+	COMMAND test_associative_multiplication)
+
+add_test(
+	NAME 	test_double_multiplication
+	COMMAND test_double_multiplication)

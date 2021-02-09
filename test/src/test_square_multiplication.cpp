@@ -18,7 +18,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
 
 #include "doctest.h"
 #include "matrix.h"
@@ -56,9 +55,9 @@ TEST_CASE("small_matrix1")
 TEST_CASE("small_matrix2")
 {
     using namespace linalg;
-    Matrix<int> A{{{1, 2, 3, 3}, {4, 5, 6, 6}, {7, 8, 9, 9}, {1, 2, 3, 4}}};
-    Matrix<int> B{{{4, 3, 2, 1}, {9, 9, 8, 7}, {6, 6, 5, 4}, {3, 3, 2, 1}}};
-    Matrix<int> C{{{49, 48, 39, 30}, {115, 111, 90, 69}, {181, 174, 141, 108}, {52, 51, 41, 31}}};
+    Matrix<int> A{{{1, 2, 3, 3}, {4, 5, 6, 6}, {7, 8, 9, 9}, {1, 2, 3, 4}}};                        // (4, 4)
+    Matrix<int> B{{{4, 3, 2, 1}, {9, 9, 8, 7}, {6, 6, 5, 4}, {3, 3, 2, 1}}};                        // (4, 4)
+    Matrix<int> C{{{49, 48, 39, 30}, {115, 111, 90, 69}, {181, 174, 141, 108}, {52, 51, 41, 31}}};  // (4, 4)
     CHECK(isSame(C, A * B) == 1);
 }
 

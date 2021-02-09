@@ -24,7 +24,6 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include <assert.h>
 
 
 namespace linalg
@@ -133,7 +132,13 @@ public:
         // long long int row_size{m_matrix[0].size()};
         for (int row=1; row<m_matrix.size(); row++)
         {
-            assert(m_matrix[row - 1].size() == m_matrix[row].size());
+            if (m_matrix[row - 1].size() != m_matrix[row].size())
+            {
+                std::cout << m_matrix[row - 1].size() << ", " << m_matrix[row].size() << '\n';
+                // std::cerr << "Contructor - Matrix dimension do not match" << std::endl;
+                // std::abort();
+                throw "Contructor - Matrix dimension do not match";
+            }
         }
     }
 
@@ -162,7 +167,7 @@ public:
     *                object. Will default to 0.
     * @return Initializes a Matrix object.
     */
-    Matrix(const size_t& row, const size_t& col, int value=0)
+    Matrix(const size_t& row, const size_t& col, T value=0)
         : m_matrix{row, std::vector<T>(col, value)}
     {
     }
@@ -333,7 +338,13 @@ private:
 template <typename T>
 Matrix<T> operator*(const Matrix<T>& mat1, const Matrix<T>& mat2)
 {
-    assert(mat1.m_matrix[0].size() == mat2.m_matrix.size());
+    if (mat1.m_matrix[0].size() != mat2.m_matrix.size())
+    {
+        // std::cerr << "Matrix dimension do not match" << std::endl;
+        // std::abort();
+        throw "Matrix dimension do not match";
+    }
+
     Matrix<T> res(mat1.m_matrix.size(), mat2.m_matrix[0].size());
 
     for (int i=0; i<res.m_matrix.size(); i++)

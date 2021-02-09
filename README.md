@@ -1,10 +1,15 @@
 # libmatmul
 
-This is a header-only library for matrix multiplication and transposition.
+This is a header-only template library for matrix multiplication and transposition.
+
+### NOTE: The Matrix objects should be of arithmetic type, otherwise, the object will display undefined behavior.
+### NOTE: The Matrix objects during multiplication operation should be of the same type, otherwise there is a chance of narrowing conversion.
+### NOTE: The Matrix object cannot be empty-initialized.
 
 ## Development and Testing
 
 To compile the library standalone for development and testing purposes, clone the library.
+
 ```Shell
 git clone git@github.com:shantanuwadnerkar/matmul.git
 cd matmul
@@ -24,9 +29,7 @@ cmake
 make
 ```
 
-This will configure the workspace and make the library Matrix.h an interface library. The defualt compiler options are `CMAKE_BUILD_TYPE=Release` and `BUILD_TEST=ON`.
-
-/// To compile and run unit tests, change the cmake configuration. Perform this commands inside the build/ folder created in the previous step.
+This will configure the workspace and make the library Matrix.h an interface library. The defualt compiler options are `CMAKE_BUILD_TYPE=Release` and `BUILD_TEST=ON`. To turn off default compilation of unit tests, set this flag `-DBUILD_TEST=OFF` when configuring CMake.
 
 ```Shell
 cmake ../ -DCMAKE_BUILD_TYPE=Release -DBULD_TEST=ON
@@ -34,11 +37,16 @@ make
 make test
 ```
 
-/// By default, unit tests will be compiled. To turn that off, set this flag `-DBUILD_TEST=OFF` when configuring CMake.
+You can also run `ctest` instead of `make test`. This will run all the test cases and show the performance on the console. Each test executable has several test cases inside them. When this executable is run, additional results can be seen. To run a test executable, go to the build folder and call the executable. For example,
 
-/// You can also run `ctest` instead of `make test`. This will run all the test cases and show the performance on the console.
+```Shell
+cd build
+./test/test_square_multiplication
+```
 
-/// There is an additional test case which does time profiling by using steady_clock() from chrono library. To run, the library and test cases should be compiled from the previous step.
+There are several other executables inside the `test/` folder.
+
+There is an additional test case which does time profiling by using `steady_clock()` from chrono library. To run, the library and test cases should be compiled from the previous step.
 
 ```Shell
 ./test/test_time_multiplication

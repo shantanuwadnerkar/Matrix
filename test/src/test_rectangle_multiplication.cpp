@@ -18,7 +18,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <iostream>
 
 #include "doctest.h"
 #include "matrix.h"
@@ -38,8 +37,8 @@ TEST_CASE("square_rectangle")
 TEST_CASE("rectangle_square")
 {
     using namespace linalg;
-    Matrix<int> B{{{1, 2, 4} ,{5, 7, 8}}};               // (2, 3)
-    Matrix<int> A{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};    // (3, 3)
+    Matrix<int> A{{{1, 2, 4} ,{5, 7, 8}}};               // (2, 3)
+    Matrix<int> B{{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}};    // (3, 3)
     Matrix<int> C{{{37, 44, 51}, {89, 109, 129}}};
     CHECK(isSame(C, A * B) == 1);
 }
@@ -62,79 +61,32 @@ TEST_CASE("rectangle_rectangle2")
     CHECK(isSame(C, A * B) == 1);
 }
 
-
-
-// TEST_CASE("small_matrix2")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{{{1, 2, 3, 3}, {4, 5, 6, 6}, {7, 8, 9, 9}, {1, 2, 3, 4}}};
-//     Matrix<int> B{{{4, 3, 2, 1}, {9, 9, 8, 7}, {6, 6, 5, 4}, {3, 3, 2, 1}}};
-//     Matrix<int> C{{{49, 48, 39, 30}, {115, 111, 90, 69}, {181, 174, 141, 108}, {52, 51, 41, 31}}};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-// TEST_CASE("small_matrix3")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{5, 5, 5};
-//     Matrix<int> B{5, 5, 5};
-//     Matrix<int> C{5, 5, 125};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-// TEST_CASE("small_matrix4")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{10, 10, 5};
-//     Matrix<int> B{10, 10, 5};
-//     Matrix<int> C{10, 10, 250};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-// TEST_CASE("small_matrix5")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{10, 10, 3};
-//     Matrix<int> B{10, 10, 7};
-//     Matrix<int> C{10, 10, 210};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-// TEST_CASE("medium_ones_matrix")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{100, 100, 1};
-//     Matrix<int> B{100, 100, 1};
-//     Matrix<int> C{100, 100, 100};
-//     CHECK(isSame(C, A * B) == 1);
-// }
-
-TEST_CASE("medium_matrix")
+TEST_CASE("medium_matrix1")
 {
     using namespace linalg;
-    Matrix<int> A{100, 100, 6};
-    Matrix<int> B{100, 100, 2};
-    Matrix<int> C{100, 100, 1200};
+    Matrix<int> A{37, 45, 6};
+    Matrix<int> B{45, 73, 2};
+    Matrix<int> C{37, 73, 540};
     CHECK(isSame(C, A * B) == 1);
 }
 
-// TEST_CASE("huge_ones_matrix")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{1000, 1000, 1};
-//     Matrix<int> B{1000, 1000, 1};
-//     Matrix<int> C{1000, 1000, 1000};
-//     CHECK(isSame(C, A * B) == 1);
-// }
+TEST_CASE("medium_matrix2")
+{
+    using namespace linalg;
+    Matrix<int> A{59, 28, 7};
+    Matrix<int> B{28, 45, 4};
+    Matrix<int> C{59, 45, 784};
+    CHECK(isSame(C, A * B) == 1);
+}
 
-// TEST_CASE("huge_matrix")
-// {
-//     using namespace linalg;
-//     Matrix<int> A{1000, 1000, 9};
-//     Matrix<int> B{1000, 1000, 7};
-//     Matrix<int> C{1000, 1000, 63000};
-//     CHECK(isSame(C, A * B) == 1);
-// }
+TEST_CASE("huge_matrix")
+{
+    using namespace linalg;
+    Matrix<int> A{186, 489, 9};
+    Matrix<int> B{489, 674, 7};
+    Matrix<int> C{186, 674, 30807};
+    CHECK(isSame(C, A * B) == 1);
+}
 
 // // TEST_CASE("vhuge_matrix1")
 // // {
