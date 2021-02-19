@@ -1,9 +1,6 @@
 # Folders
 build/
 
-# VSCode Workspace
-*.code-workspace
-
 # Prerequisites
 *.d
 
