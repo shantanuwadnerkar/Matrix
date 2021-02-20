@@ -19,8 +19,8 @@
  */
 
 
-#include "doctest.h"
-#include "matrix.h"
+#include <doctest/doctest.h>
+#include <Matrix/matrix.h>
 
 
 TEST_SUITE_BEGIN("test_associative_multiplication");

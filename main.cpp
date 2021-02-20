@@ -18,9 +18,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "include/matrix.h"
 #include <iostream>
 #include <vector>
+
+#include "matrix.h"
 
 
 int main()

@@ -2,9 +2,9 @@
 
 This is a header-only template library for matrix multiplication and transposition.
 
-### NOTE: The Matrix objects should be of arithmetic type, otherwise, the object will display undefined behavior.
-### NOTE: The Matrix objects during multiplication operation should be of the same type, otherwise there is a chance of narrowing conversion.
-### NOTE: The Matrix object cannot be empty-initialized.
+NOTE: The Matrix objects should be of arithmetic type, otherwise, the object will display undefined behavior.
+NOTE: The Matrix objects during multiplication operation should be of the same type, otherwise there is a chance of narrowing conversion.
+NOTE: The Matrix object cannot be empty-initialized.
 
 ## Development and Testing
 
@@ -25,15 +25,18 @@ Create a build folder and compile.
 
 ```Shell
 mkdir build && cd build
-cmake
-make
+cmake -DCMAKE_INSTALL_PREFIX:PATH=../install ../
+cmake --build . --target install -- -j $(nproc)
 ```
+
+(note to self) Check for other ways of configuring and building from the source and build directory at: https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html
+
 
 This will configure the workspace and make the library Matrix.h an interface library. The defualt compiler options are `CMAKE_BUILD_TYPE=Release` and `BUILD_TEST=ON`. To turn off default compilation of unit tests, set this flag `-DBUILD_TEST=OFF` when configuring CMake.
 
 ```Shell
-cmake ../ -DCMAKE_BUILD_TYPE=Release -DBULD_TEST=ON
-make
+cmake -DCMAKE_BUILD_TYPE=Release -DBULD_TEST=ON -DCMAKE_INSTALL_PREFIX:PATH=../install ../
+cmake --build . --target install -- -j $(nproc)
 make test
 ```
 
@@ -55,6 +58,7 @@ There is an additional test case which does time profiling by using `steady_cloc
 ### Build Options
 To summarise, the build flags are,
 BUILD_TEST          - (ON/OFFF) build unit test
+CMAKE_INSTALL_PREFIX- Prefix path to the installation directory of the header and binary files.
 CMAKE_BUILD_TYPE    - (Release/Debug) Build for either release or debug configuration
 CMAKE_CXX_STANDARD  - (98/11/14/17) Compiles for the specified language standard
 

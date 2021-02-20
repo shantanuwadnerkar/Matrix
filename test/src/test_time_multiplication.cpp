@@ -22,7 +22,7 @@
 #include <chrono>
 #include <thread>
 
-#include "matrix.h"
+#include <Matrix/matrix.h>
 
 
 int main()
