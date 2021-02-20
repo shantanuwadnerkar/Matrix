@@ -117,9 +117,8 @@ public:
             if (m_matrix[row - 1].size() != m_matrix[row].size())
             {
                 std::cout << m_matrix[row - 1].size() << ", " << m_matrix[row].size() << '\n';
-                // std::cerr << "Contructor - Matrix dimension do not match" << std::endl;
-                // std::abort();
-                throw "Contructor - Matrix dimension do not match";
+                std::cerr << "Contructor - Matrix dimension do not match" << std::endl;
+                std::abort();
             }
         }
     }
@@ -322,9 +321,8 @@ Matrix<T> operator*(const Matrix<T>& mat1, const Matrix<T>& mat2)
 {
     if (mat1.m_matrix[0].size() != mat2.m_matrix.size())
     {
-        // std::cerr << "Matrix dimension do not match" << std::endl;
-        // std::abort();
-        throw "Matrix dimension do not match";
+        std::cerr << "Matrix dimension do not match" << std::endl;
+        std::abort();
     }
 
     Matrix<T> res(mat1.m_matrix.size(), mat2.m_matrix[0].size());
