@@ -28,10 +28,11 @@ TEST_SUITE_BEGIN("test_vector_matrix");
 TEST_CASE("vector_num1")
 {
     using namespace linalg;
-    Matrix<int> A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};         // (9, 1)
-    A = A.transpose();
+    Matrix<int> A{{1, 2, 3, 4, 5, 6, 7, 8, 9}};         // (1, 9)
+    A = A.transpose();                                  // (9, 1)
     Matrix<int> B{3};                                   // (1, 1)
     Matrix<int> C{{3, 6, 9, 12, 15, 18, 21, 24, 27}};   // (9, 1)
+    C = C.transpose();
     CHECK(isSame(C, A * B) == 1);
 }
 
@@ -40,8 +41,7 @@ TEST_CASE("vector_num2")
     using namespace linalg;
     Matrix<int> A{8};                               // (1, 1)
     Matrix<int> B{{1, 2, 3, 4, 5, 6, 7, 8, 9}};     // (1, 9)
-    B = B.transpose();
-    Matrix<int> C{{1, 2, 3, 4, 5, 6, 7, 8, 9}};     // (1, 9)
+    Matrix<int> C{{8, 16, 24, 32, 40, 48, 56, 64, 72}};     // (1, 9)
     CHECK(isSame(C, A * B) == 1);
 }
 
