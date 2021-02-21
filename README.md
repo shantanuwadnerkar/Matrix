@@ -1,3 +1,26 @@
+# TODO: Compilation error when the size function output is passed to std::cout through the operator<< overload. But this error is resolved when the linalg namespace is included.
+
+```C++
+#include <iostream>
+#include <Matrix/matrix.h>
+
+int main()
+{
+    lingalg::Matrix<int> mat1{3, 3, 5};
+    std::cout << mat1; // no error
+    mat1.size(); // no error
+    std::cout << mat1.size(); // compilation error
+
+    using namespace linalg;
+    Matrix<int> mat2{3, 3, 5};
+    std::cout << mat2; // no error
+    mat2.size(); // no error
+    std::cout << mat2.size(); // no error
+
+    return 0;
+}
+```
+
 # libmatmul
 
 This is a header-only template library for matrix multiplication and transposition.

@@ -111,7 +111,6 @@ public:
     Matrix(const std::vector<std::vector<T>>& mat)
         : m_matrix{mat}
     {
-        // long long int row_size{m_matrix[0].size()};
         for (int row=1; row<m_matrix.size(); row++)
         {
             if (m_matrix[row - 1].size() != m_matrix[row].size())
@@ -234,7 +233,7 @@ public:
     * 
     * @return The size of the Matrix object as STL Pair.
     */
-    std::pair<int, int> size();
+    std::pair<size_t, size_t> size();
 
    /**
     * @brief Output stream overload function for Matrix object.
@@ -268,7 +267,7 @@ public:
     * 
     * @return The output stream of the size of the Matrix object.
     */
-    friend std::ostream& operator<< (std::ostream& output, const std::pair<int, int>& size);
+    friend std::ostream& operator<< (std::ostream& output, const std::pair<size_t, size_t>& size);
 
    /**
     * @brief This function implements the comparison operator for 
@@ -381,7 +380,7 @@ Matrix<T> Matrix<T>::transpose()
 }
 
 template <typename T>
-std::pair<int, int> Matrix<T>::size()
+std::pair<size_t, size_t> Matrix<T>::size()
 {
     // row, col
     return std::make_pair(this->m_matrix.size(), this->m_matrix[0].size());
@@ -420,7 +419,7 @@ std::ostream& operator<< (std::ostream& output, const Matrix<T>& mat)
     return output;
 }
 
-std::ostream& operator<< (std::ostream& output, const std::pair<int, int>& size)
+std::ostream& operator<< (std::ostream& output, const std::pair<size_t, size_t>& size)
 {
     output << "(" << size.first << ", " << size.second << ")\n";
     return output;
